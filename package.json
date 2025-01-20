@@ -10,6 +10,9 @@
   "author": "Ilia Verizhnikov",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.13.2"
+    "@parcel/transformer-html": "^2.13.3",
+    "parcel": "^2.13.2",
+    "semver": "^7.6.3",
+    "svgo": "^3.3.2"
   }
 }
