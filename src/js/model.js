@@ -7,6 +7,11 @@ export const state = {
     author: 'test',
     id: '1333',
   },
+  typingMode: {
+    testToggle: false,
+    punctationToggle: false,
+    wordCount: 10,
+  },
   words: [],
   bookmarks: [],
 };
@@ -18,23 +23,6 @@ const createQuoteObject = function (data) {
     id: data.id,
   };
 };
-
-// const createWordsObject = async function (wordQuantity) {
-//   await loadMultipleQuotes();
-//   let result = '';
-//   const words = state.words;
-
-//   for (i = 0; i < wordQuantity; i++) {
-//     result = result.concat(words[i] + ' ');
-//   }
-//   // console.log(result.trim());
-
-//   return {
-//     text: result.trim(),
-//     author: '',
-//     id: '',
-//   };
-// };
 
 const quoteLoader = async function (id = 'random/') {
   try {
@@ -59,16 +47,15 @@ export const loadSingleQuote = async function (id) {
   }
 };
 
-export const loadWords = async function (count = 10, index) {
+export const loadWords = async function (count, index) {
   try {
     // console.log(index);
-    if (index === 0) {
+    if (!index) {
       state.quote = await createWordsObject(count);
-      console.log(state.quote);
-    } else if (index === 1) {
+    } else if (index) {
       state.quote = await createPunctationWordsObject(count);
     }
-  } catch {
+  } catch (err) {
     console.error(err);
     throw err;
   }

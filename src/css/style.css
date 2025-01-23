@@ -133,6 +133,7 @@
 
 .typing-test--container {
   max-height: 48rem;
+  padding-top: 3rem;
 }
 
 /* Quote field */

@@ -5,27 +5,28 @@ import icons from '../../img/icons.svg';
 class SuccessView extends View {
   _parentElement = document.querySelector('.typing-test--container');
   _timeoutValue = 250;
-  
+
   render(toggle) {
-    
     setTimeout(() => {
       this._clear();
-      if(!toggle) {
-      this._parentElement.insertAdjacentHTML(
-        'afterbegin',
-        this._generateMarkup()
-      );
-    } else {
-      this._parentElement.insertAdjacentHTML(
-        'afterbegin',
-        this._generateMarkupWord()
-      );
-    }
+      if (!toggle) {
+        this._parentElement.insertAdjacentHTML(
+          'afterbegin',
+          this._generateMarkupQuote()
+        );
+      } else {
+        this._parentElement.insertAdjacentHTML(
+          'afterbegin',
+          this._generateMarkupWords()
+        );
+      }
       this._fadeIn();
     }, this._timeoutValue);
   }
 
-  addHandlerRenderPreviousText(handler) {
+  // Render Previous Test
+
+  addHandlerRenderPreviousTest(handler) {
     this._parentElement.addEventListener(
       'click',
       function (e) {
@@ -51,7 +52,7 @@ class SuccessView extends View {
     );
   }
 
-  _generateMarkup() {
+  _generateMarkupQuote() {
     return `
   <div class="success-container full-width content-grid" style="opacity: 1">
             <div class="success-data--container">
@@ -81,7 +82,7 @@ class SuccessView extends View {
   `;
   }
 
-  _generateMarkupWord() {
+  _generateMarkupWords() {
     return `
   <div class="success-container full-width content-grid" style="opacity: 1">
             <div class="success-data--container">
@@ -104,7 +105,6 @@ class SuccessView extends View {
     </div>
   `;
   }
-
 }
 
 export default new SuccessView();

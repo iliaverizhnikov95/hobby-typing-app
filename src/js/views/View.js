@@ -5,8 +5,9 @@ export default class View {
   _timeoutValue;
 
   render(data) {
+    if(!data) return this.renderError(err);
+
     this._data = data;
-    // const markup = this._generateMarkup;
     setTimeout(() => {
       this._clear();
       this._parentElement.insertAdjacentHTML(
@@ -29,17 +30,7 @@ export default class View {
     this._parentElement.classList.add('invisible');
   }
 
-  addHandlerRenderRendomQuote(handler) {
-    this._parentElement.addEventListener('click', function (e) {
-      const target = e.target.closest('.btn--reload');
-
-      if (target) {
-        handler();
-      }
-    });
-  }
-
-  renderError(message = this._errorMessage) {
+  renderError(message) {
     const markup = `
       <div class="error">
         <div>
@@ -47,7 +38,7 @@ export default class View {
             <use href="${icons}#icon--alert-triangle"></use>
           </svg>
         </div>
-        <p>${message}</p>
+        <p>${this._errorMessage}<br>${message}</p>
       </div>
     `;
     this._clear();
@@ -55,15 +46,3 @@ export default class View {
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 }
-
-// renderSpinner() {
-//   const markup = `
-//     <div class="spinner">
-//       <svg>
-//         <use href="${icons}#icon-loader"></use>
-//       </svg>
-//     </div>
-//   `;
-//   this._clear();
-//   this._parentElement.insertAdjacentHTML('afterbegin', markup);
-// }

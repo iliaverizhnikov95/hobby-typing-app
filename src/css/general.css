@@ -237,6 +237,10 @@ body {
   color: var(--error-color);
 }
 
+.error p {
+text-align: center
+}
+
 .error svg {
   height: 10rem;
   width: 10rem;
