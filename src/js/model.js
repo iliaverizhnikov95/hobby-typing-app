@@ -81,7 +81,7 @@ export const createWordsObject = async function (count = 10) {
 
     let result = '';
 
-    for (i = 0; i < count; i++) {
+    for (var i = 0; i < count; i++) {
       result = result.concat(state.words[i] + ' ');
     }
     // console.log(result.trim());
@@ -151,7 +151,7 @@ const createPunctationWordsObject = async function (count = 10) {
 
     let result = '';
 
-    for (i = 0; i < count; i++) {
+    for (var i = 0; i < count; i++) {
       result = result.concat(rendomWords[i] + ' ');
     }
 
