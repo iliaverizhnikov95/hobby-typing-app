@@ -100,7 +100,7 @@ body {
 
 .btn:hover * {
   cursor: pointer;
-  color: var(--text-color);
+  color: var(--logo-color);
   opacity: 1;
   transition: 0.3s;
 }
