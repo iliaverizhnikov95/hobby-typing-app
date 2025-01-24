@@ -6,7 +6,8 @@ class TypingView extends View {
   _parentElement = document.querySelector('.typing-test--container');
   _timeoutValue = 100;
   _errorMessage = 'We could not load your test. Please reload the page!';
-
+  _successMessage = 'Congretulation!!! Choose your next step...'
+  
   addHandlerReloadTest(handler) {
     this._parentElement.addEventListener(
       'click',
@@ -29,7 +30,7 @@ class TypingView extends View {
         
         if (targetText) {
           if (comparisonText === targetText.value) {
-            handler();
+            handler(this._successMessage);
           } else if (comparisonText.startsWith(targetText.value)) {
             targetText.classList.remove('incorrect');
           } else {

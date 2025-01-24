@@ -5,21 +5,30 @@ import successResultView from './views/successResultView.js';
 import typingModeView from './views/typingModeView.js';
 import favouriteQuoteView from './views/favouriteQuoteView.js';
 
+const state = model.state;
+
+/**
+ * Depends on modeToggle controls the test rendering process. If modeToggle set to false it starts execution of loading and rendering single quote, if true - starts execution of loading and rendering set of words.
+ * @param {string} id - In case of loading a specific quote, it gets the ID, or uses the default value ('random/') to loading random quote. 
+ */
+
 const controlTypingTest = async function (id) {
   try {
-    const mode = model.state.typingMode;
+    const mode = state.typingMode;
+
+    // 1) Clearing container
     typingTestView.fadeOut();
 
-    // 1) Loading test
-    if (mode.testToggle) {
+    // 2) Loading test
+    if (mode.modeToggle) {
       await model.loadWords(mode.wordCount, mode.punctationToggle);
-    } else if (!mode.testToggle) {
+    } else if (!mode.modeToggle) {
       await model.loadSingleQuote(id);
     }
 
-    // 2) Rendering Typing View
-    typingTestView.render(model.state.quote);
-    typingModeView.getData(model.state);
+    // 3) Rendering test
+    typingTestView.render(state.quote);
+    typingModeView.getData(state);
   } catch (err) {
     console.error(err);
     typingTestView.renderError(err);
@@ -27,38 +36,39 @@ const controlTypingTest = async function (id) {
 };
 controlTypingTest();
 
-const controlTestMode = function (testToggle, punctationToggle, wordCount) {
-  model.state.typingMode.testToggle = testToggle;
-  model.state.typingMode.punctationToggle = punctationToggle;
-  model.state.typingMode.wordCount = wordCount;
+const controlTestMode = function (modeToggle, punctationToggle, wordCount) {
+  // Setting up the configuration of test mode
+  state.typingMode.modeToggle = modeToggle;
+  state.typingMode.punctationToggle = punctationToggle;
+  state.typingMode.wordCount = wordCount;
   controlTypingTest();
 };
 
-const controlSuccessResult = function () {
+const controlSuccessResult = function (message) {
   successResultView.fadeOut();
-
-  // 2) Rendering Success View
-  successResultView.render(model.state.typingMode.testToggle);
+  successResultView.render(state.typingMode.modeToggle, message);
 };
 
 const controlRenderPreviousTest = function () {
   typingTestView.fadeOut();
-  typingTestView.render(model.state.quote);
+  typingTestView.render(state.quote);
 };
 
-const controlAddFavouriteQuote = function () {
+const controlAddFavouriteQuote = function (message) {
+  successResultView.fadeOut();
   model.addFavouriteQuote();
-  favouriteQuoteView.render(model.state.bookmarks);
+  favouriteQuoteView.render(state.bookmarks);
+  successResultView.render(true, message);
 };
 
 const controlLoadFavouriteQuotes = function () {
-  model.getBookmarks();
-  favouriteQuoteView.render(model.state.bookmarks);
+  model.getFavouriteQuotes();
+  favouriteQuoteView.render(state.bookmarks);
 };
 controlLoadFavouriteQuotes();
 
 const controlRenderFavouriteQuote = function (id) {
-  model.state.typingMode.testToggle = false;
+  state.typingMode.modeToggle = false;
   typingModeView.setDefaultMode();
   controlTypingTest(id);
   favouriteQuoteView.toggleModal();
@@ -66,7 +76,7 @@ const controlRenderFavouriteQuote = function (id) {
 
 const controlRemoveFavouriteQuote = function (id) {
   model.removeFavouriteQuote(id);
-  favouriteQuoteView.render(model.state.bookmarks);
+  favouriteQuoteView.render(state.bookmarks);
 };
 
 const init = function () {

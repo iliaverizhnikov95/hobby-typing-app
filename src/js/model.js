@@ -8,7 +8,7 @@ export const state = {
     id: '1333',
   },
   typingMode: {
-    testToggle: false,
+    modeToggle: false,
     punctationToggle: false,
     wordCount: 10,
   },
@@ -16,91 +16,13 @@ export const state = {
   bookmarks: [],
 };
 
-const createQuoteObject = function (data) {
-  return {
-    text: capitalLettersQuote(data.quote.toLowerCase()).trim(),
-    author: data.author,
-    id: data.id,
-  };
-};
+// Single Quote Mode Handling
 
-const quoteLoader = async function (id = 'random/') {
-  try {
-    const data = await getJSON(`${API_URL}${id}`);
-    return data;
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
-};
-
-export const loadSingleQuote = async function (id) {
-  try {
-    const data = await quoteLoader(id);
-
-    state.quote = createQuoteObject(data);
-
-    // console.log(state.quote);
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
-};
-
-export const loadWords = async function (count, index) {
-  try {
-    // console.log(index);
-    if (!index) {
-      state.quote = await createWordsObject(count);
-    } else if (index) {
-      state.quote = await createPunctationWordsObject(count);
-    }
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
-};
-
-export const createWordsObject = async function (count = 10) {
-  try {
-    const words = [];
-    state.words = [];
-    while (state.words.length < 50) {
-      const data = await quoteLoader(`random/7`);
-
-      data.map(obj => {
-        const wordsArr = obj.quote.match(/\w+/g);
-        wordsArr.forEach(word => {
-          if (word.length > 1) state.words.push(word.toLowerCase());
-        });
-      });
-    }
-
-    const setWords = new Set(words);
-    setWords.forEach(word => state.words.push(word));
-
-    let result = '';
-
-    for (var i = 0; i < count; i++) {
-      result = result.concat(state.words[i] + ' ');
-    }
-    // console.log(result.trim());
-
-    return {
-      text: result.trim(),
-      author: '',
-      id: '',
-    };
-
-    // console.log(state.words);
-    // console.log(state.words[0]);
-    // console.log(state.words.length);
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
-};
-// loadMultipleQuotes();
+/**
+ * Returns string with capital letters at the beginning and in some required cases.
+ * @param {string} data - Lower case sting.
+ * @returns {string} - Capitalised string with dot.
+ */
 
 const capitalLettersQuote = function (data) {
   const capLettersQuote = data.split('.').map(str => {
@@ -128,7 +50,121 @@ const capitalLettersQuote = function (data) {
   return capLettersQuote.join('. ');
 };
 
-const createPunctationWordsObject = async function (count = 10) {
+const createQuoteObject = function (data) {
+  return {
+    text: capitalLettersQuote(data.quote.toLowerCase()).trim(),
+    author: data.author,
+    id: data.id,
+  };
+};
+
+/**
+ * Loads a random or specific quote using the API.
+ * @param {string} id - In case of loading a specific quote, it gets the ID, or uses the default value ('random/') to loading random quote.
+ * @returns {object} - Object with quote text, author and ID. 
+ */
+
+const quoteLoader = async function (id = 'random/') {
+  try {
+    const data = await getJSON(`${API_URL}${id}`);
+    return data;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+export const loadSingleQuote = async function (id) {
+  try {
+    const data = await quoteLoader(id);
+    state.quote = createQuoteObject(data);
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+// Words Mode Handling
+
+/**
+ * Shuffles elements from the received Array.
+ * @param {object[]} arr - An array containing words.
+ * @param {Number} wordCount - Specified number of words.
+ * @returns 
+ */
+
+function getRandomElements(arr, wordCount) {
+  const shuffled = [...arr].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, wordCount);
+}
+
+/**
+ * Depending on the punctationToggle parameter, it starts creating a set of words in lowercase, or a set of words with punctuation.
+ * @param {Number} wordCount - Specified number of words. 
+ * @param {boolean} punctationToggle - If false (default) creating words without punctation, true - words with punctuation.
+ */
+
+export const loadWords = async function (wordCount, punctationToggle) {
+  try {
+    if (!punctationToggle) {
+      state.quote = await createWordsObject(wordCount);
+    } else if (punctationToggle) {
+      state.quote = await createPunctationWordsObject(wordCount);
+    }
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+/**
+ * Creates a set of words in lowercase.
+ * @param {Number} wordCount - Specified number of words. 
+ * @returns {object} - Object with empty value in author and ID keys, only set of words in text key.
+ */
+
+const createWordsObject = async function (wordCount) {
+  try {
+    const words = [];
+    state.words = [];
+    while (state.words.length < 50) {
+      const data = await quoteLoader(`random/7`);
+
+      data.map(obj => {
+        const wordsArr = obj.quote.match(/\w+/g);
+        wordsArr.forEach(word => {
+          if (word.length > 1) state.words.push(word.toLowerCase());
+        });
+      });
+    }
+
+    const setWords = new Set(words);
+    setWords.forEach(word => state.words.push(word));
+
+    let result = '';
+
+    for (var i = 0; i < wordCount; i++) {
+      result = result.concat(state.words[i] + ' ');
+    }
+
+    return {
+      text: result.trim(),
+      author: '',
+      id: '',
+    };
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+/**
+ * Creates a set of words with punctation.
+ * @param {Number} wordCount - Specified number of words.
+ * @returns {object} - Object with empty value in author and ID keys, only set of words in text key.
+ */
+
+const createPunctationWordsObject = async function (wordCount) {
   try {
     const words = [];
     state.words = [];
@@ -147,11 +183,11 @@ const createPunctationWordsObject = async function (count = 10) {
       setWords.forEach(word => state.words.push(word));
     }
 
-    const rendomWords = getRandomElements(state.words, count);
+    const rendomWords = getRandomElements(state.words, wordCount);
 
     let result = '';
 
-    for (var i = 0; i < count; i++) {
+    for (var i = 0; i < wordCount; i++) {
       result = result.concat(rendomWords[i] + ' ');
     }
 
@@ -160,30 +196,20 @@ const createPunctationWordsObject = async function (count = 10) {
       author: '',
       id: '',
     };
-
-    // console.log(state.words);
-    // console.log(state.words[0]);
-    // console.log(state.words.length);
   } catch (err) {
     console.error(err);
     throw err;
   }
 };
 
-function getRandomElements(arr, count) {
-  const shuffled = [...arr].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count);
-}
+// Favourite Quote Hadling
 
-// Favourite Quote
-
-export const getBookmarks = function () {
+export const getFavouriteQuotes = function () {
   const storage = localStorage.getItem('bookmarks');
   if (storage) state.bookmarks = JSON.parse(storage);
-  // console.log(state.bookmarks);
 };
 
-const persistBookmarks = function () {
+const persistFavouriteQuote = function () {
   localStorage.setItem('bookmarks', JSON.stringify(state.bookmarks));
 };
 
@@ -193,7 +219,7 @@ export const addFavouriteQuote = function () {
 
   if (storage.length === 0) {
     state.bookmarks.push(state.quote);
-    persistBookmarks();
+    persistFavouriteQuote();
   }
 
   quote.push(...storage.map(q => q.id === state.quote.id));
@@ -201,22 +227,16 @@ export const addFavouriteQuote = function () {
   if (quote.includes(true)) return;
   else {
     state.bookmarks.push(state.quote);
-    persistBookmarks();
+    persistFavouriteQuote();
   }
 };
 
 export const removeFavouriteQuote = function (id) {
-  // Delete bookmark
-  console.log(id);
   const index = state.bookmarks.findIndex(el => el.id === id);
-  console.log(index);
   state.bookmarks.splice(index, 1);
-  console.log(state.bookmarks);
-
-  persistBookmarks();
+  persistFavouriteQuote();
 };
 
 const clearBookmarks = function () {
   localStorage.clear('bookmarks');
 };
-// clearBookmarks();

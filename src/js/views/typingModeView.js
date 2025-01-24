@@ -6,8 +6,8 @@ class TypingModeView extends View {
   _btnWord = document.querySelector('.btn--type-words');
   _btnQuote = document.querySelector('.btn--type-quote');
   _punctation = document.querySelector('.punctation');
-  _counter = document.querySelector('.counter');
-  _testToggle = false;
+  _counter = document.querySelector('.counter-panel');
+  _modeToggle = false;
   _punctationToggle = false;
   _wordCount = DEFAULT_COUNT;
 
@@ -18,15 +18,15 @@ class TypingModeView extends View {
   setDefaultMode() {
     this._btnWord.classList.remove('active');
     this._btnQuote.classList.add('active');
-    this._punctation.classList.add('shrinking');
-    this._counter.classList.add('shrinking');
-    this._testToggle = false;
+    this._punctation.classList.add('shrink');
+    this._counter.classList.add('shrink');
+    this._modeToggle = false;
   }
 
   activeModeButtonToggling(target) {
     target.classList.toggle('active');
-    this._punctation.classList.toggle('shrinking');
-    this._counter.classList.toggle('shrinking');
+    this._punctation.classList.toggle('shrink');
+    this._counter.classList.toggle('shrink');
   }
 
   addHandlerQuoteMode(handler) {
@@ -34,11 +34,11 @@ class TypingModeView extends View {
       'click',
       function (e) {
         const target = e.target.closest('.btn--type-quote');
-        if (target && this._testToggle === true) {
+        if (target && this._modeToggle === true) {
           this.activeModeButtonToggling(target);
           this._btnWord.classList.toggle('active');
-          this._testToggle = false;
-          handler(this._testToggle, this._punctationToggle, this._wordCount);
+          this._modeToggle = false;
+          handler(this._modeToggle, this._punctationToggle, this._wordCount);
         }
       }.bind(this)
     );
@@ -49,11 +49,11 @@ class TypingModeView extends View {
       'click',
       function (e) {
         const target = e.target.closest('.btn--type-words');
-        if (target && this._testToggle === false) {
+        if (target && this._modeToggle === false) {
           this.activeModeButtonToggling(target);
           this._btnQuote.classList.toggle('active');
-          this._testToggle = true;
-          handler(this._testToggle, this._punctationToggle, this._wordCount);
+          this._modeToggle = true;
+          handler(this._modeToggle, this._punctationToggle, this._wordCount);
         }
       }.bind(this)
     );
@@ -72,7 +72,7 @@ class TypingModeView extends View {
           });
           this._wordCount = +e.target.dataset.count;
           e.target.classList.add('active');
-          handler(this._testToggle, this._punctationToggle, this._wordCount);
+          handler(this._modeToggle, this._punctationToggle, this._wordCount);
         }
       }.bind(this)
     );
@@ -87,11 +87,11 @@ class TypingModeView extends View {
         if (target && !this._punctationToggle) {
           target.classList.add('active');
           this._punctationToggle = true;
-          handler(this._testToggle, this._punctationToggle, this._wordCount);
+          handler(this._modeToggle, this._punctationToggle, this._wordCount);
         } else if (target && this._punctationToggle) {
           target.classList.remove('active');
           this._punctationToggle = false;
-          handler(this._testToggle, this._punctationToggle, this._wordCount);
+          handler(this._modeToggle, this._punctationToggle, this._wordCount);
         }
       }.bind(this)
     );

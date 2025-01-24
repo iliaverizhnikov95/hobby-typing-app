@@ -59,7 +59,7 @@ class FavouriteQuoteView extends View {
         const target = e.target.closest('.btn--favourite-quote');
 
         if (target) {
-          handler(target.dataset.id1);
+          handler(target.dataset.id);
         }
       }.bind(this)
     );
@@ -92,8 +92,8 @@ class FavouriteQuoteView extends View {
           data-id="${this._data.id}"
           title="remove"
         >
-          <svg class="icon icon--trash">
-            <use href="${icons}#icon--trash"></use>
+          <svg class="icon icon-trash">
+            <use href="${icons}#icon-trash"></use>
           </svg>
         </button>
       </li>
