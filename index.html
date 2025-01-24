@@ -23,6 +23,8 @@
 
   <body>
     <div id="app" class="content-grid">
+      <!-- Header Section -->
+
       <header class="header">
         <div class="menu">
           <a class="logo" href=".">
@@ -42,7 +44,7 @@
                 <use href="src/img/icons.svg#icon-crown"></use>
               </svg>
             </button>
-            <button class="btn btn--info" title="about">
+            <button class="btn btn--info" title="my_CV">
               <svg class="icon icon-info">
                 <use href="src/img/icons.svg#icon-info"></use>
               </svg>
@@ -58,50 +60,14 @@
         </div>
       </header>
 
-      <main class="full-width content-grid" style="height: 100%">
-        <!-- ***SECTION SUCCESS*** -->
+      <!-- Typing Section -->
 
-        <!-- <div class="success-data--container">
-            Congretulation!!! Choose your next step...
-          </div>
-          <div class="menu-success">
-            <button class="btn btn--reload btn-tooltip" aria-label="next quote">
-              <svg class="icon icon--next-quote">
-                <use href="img/icons.svg#icon--right-chevron"></use>
-              </svg>
-              <span class="tooltip">Next quote</span>
-            </button>
-            <button
-              class="btn btn--repeat-quote btn-tooltip"
-              aria-label="repeat quote"
-            >
-              <svg class="icon icon--repeat-quote">
-                <use href="img/icons.svg#icon--repeat"></use>
-              </svg>
-              <span class="tooltip">Repeat quote</span>
-            </button>
-            <button
-              class="btn btn--add-quote btn-tooltip"
-              aria-label="add to favourite"
-            >
-              <svg class="icon icon--add-quote">
-                <use href="img/icons.svg#icon-close"></use>
-              </svg>
-              <span class="tooltip">Add to favourite</span>
-            </button>
-          </div> -->
-
-        <!-- ***SECTION TYPING*** -->
-
-        <div
-          class="typing-container full-width content-grid"
-          style="opacity: 1"
-        >
-          <!-- Mode panel container -->
-
+      <main class="full-width content-grid">
+        <div class="typing-container full-width content-grid">
+          <!-- Typing Mode Container -->
           <div class="typing-mode--container full-width">
-            <div class="mode-panel">
-              <div class="punctation shrinking">
+            <div class="punctation-panel">
+              <div class="punctation shrink">
                 <button class="btn btn-text btn--punctation">
                   <svg class="icon icon--at-sign">
                     <use href="src/img/icons.svg#icon--at-sign"></use>
@@ -111,7 +77,7 @@
                 <div class="spacer spacer-left"></div>
               </div>
 
-              <div class="mode">
+              <div class="test-mode">
                 <button class="btn btn-text btn--type-words">
                   <svg class="icon icon--letter-a">
                     <use href="src/img/icons.svg#icon--letter-a"></use>
@@ -119,14 +85,14 @@
                   <div class="">words</div>
                 </button>
                 <button class="btn btn-text btn--type-quote active">
-                  <svg class="icon icon--quote">
-                    <use href="src/img/icons.svg#icon--quote"></use>
+                  <svg class="icon icon-quote">
+                    <use href="src/img/icons.svg#icon-quote"></use>
                   </svg>
                   <div class="">quote</div>
                 </button>
               </div>
 
-              <div class="counter shrinking">
+              <div class="counter-panel shrink">
                 <div class="spacer spacer-right"></div>
                 <button class="btn">
                   <div class="count active" data-count="10">10</div>
@@ -141,65 +107,55 @@
             </div>
           </div>
 
-          <!-- Typing container -->
-          <div class="typing-test--container">
-            <!-- <div class="quote">
-              <div class="text-field">
-                test
-                <div class="author-field">test</div>
-              </div>
-            </div>
-            <div class="input">
-              <textarea
-                class="input-field"
-                type="text"
-                spellcheck="false"
-                placeholder="Start typing the quote..."
-              ></textarea>
-              <div>
-                <button class="btn btn--reload btn-tooltip" aria-label="Reload">
-                  <svg class="icon icon-reloader">
-                    <use href="img/icons.svg?version=1#icon-reloader"></use>
-                  </svg>
-                  <span class="tooltip">Restart</span>
-                </button>
-              </div>
-            </div> -->
-          </div>
+          <!-- Typing Test Container -->
+          <div class="typing-test--container"></div>
         </div>
       </main>
 
-      <footer class="footer">
-        <div class="key-tips">
+      <!-- Tips Section -->
+
+      <div class="key-tips">
+        <div class="tip">
           Press
           <svg class="icon-cv">
             <use href="src/img/icons.svg#icon-info"></use>
           </svg>
-          to watch my CV
+          at the top of the screen to watch my CV.
         </div>
-        <div class="leftright">
-          <p class="copyright">
-            Copyright &copy; <span class="year">2025</span> by
-            <a
-              class="link"
-              target="_blank"
-              href="https://www.linkedin.com/in/iliaverizhnikov95/"
-              >Ilia Verizhnikov</a
-            >. All rights reserved.
-          </p>
+        <div class="tip">
+          Press
+          <svg class="icon-cv">
+            <use href="src/img/icons.svg#icon--letter-q"></use>
+          </svg>
+          in the upper right corner to choose your favorite quote.
+        </div>
+      </div>
 
+      <!-- Footer Section -->
+
+      <footer class="footer">
+        <p class="copyright">
+          Copyright &copy; <span class="year">2025</span> by
           <a
-            class="link btn-text"
+            class="link"
             target="_blank"
-            href="https://github.com/iliaverizhnikov95/hobby-typing-app"
-            ><svg class="icon icon--branch">
-              <use href="src/img/icons.svg#icon--branch"></use>
-            </svg>
-            v1.0
-          </a>
-        </div>
+            href="https://www.linkedin.com/in/iliaverizhnikov95/"
+            >Ilia Verizhnikov</a
+          >. All rights reserved.
+        </p>
+        <a
+          class="link btn-text"
+          target="_blank"
+          href="https://github.com/iliaverizhnikov95/hobby-typing-app"
+          ><svg class="icon icon-branch">
+            <use href="src/img/icons.svg#icon-branch"></use>
+          </svg>
+          v1.2.0
+        </a>
       </footer>
     </div>
+
+    <!-- POPUPs Section -->
 
     <div class="quote-popup">
       <div class="overlay"></div>
@@ -216,69 +172,33 @@
           </svg>
           <div class="title-text">Favourit quotes</div>
         </div>
-        <ul class="favourite-quote--list">
-          <!-- <li class="favourite-quote">
-            <button class="btn btn--favourite-quote" data-id="714">
-              <div class="favourite--text-field">
-                Do not look down upon any muslim, for even the most inferior
-                believer is great in the eyes of god.
-              </div>
-              <div class="favourite--author-field">Abu Bakr (R.A)</div>
-            </button>
-            <button
-              class="btn btn--remove-favourite-quote"
-              data-id="714"
-              title="remove"
-            >
-              <svg class="icon icon--trash">
-                <use href="img/icons.svg#icon--trash"></use>
-              </svg>
-            </button>
-          </li>
-          <li class="favourite-quote">
-            <button class="btn btn--favourite-quote" data-id="850">
-              <div class="favourite--text-field">
-                All is known in the sacredness of silence.
-              </div>
-              <div class="favourite--author-field">Rumi</div>
-            </button>
-            <button
-              class="btn btn--remove-favourite-quote"
-              data-id="850"
-              title="remove"
-            >
-              <svg class="icon icon--trash">
-                <use href="img/icons.svg#icon--trash"></use>
-              </svg>
-            </button>
-          </li> -->
-        </ul>
+        <ul class="favourite-quote--list"></ul>
       </div>
     </div>
 
     <div class="cv-popup hidden">
       <div class="cv-modal">
-        <div class="dev-img">
+        <div class="devs-photo">
           <img src="src/img/developer.jpg" alt="Developer's photo" />
         </div>
         <div class="left-side">
           <h2 class="heading">Personal details</h2>
           <ul class="personal-details bulletless-list">
             <li>
-              <svg class="icon cv-icon">
-                <use href="src/img/icons.svg?version=1#icon--phone"></use>
+              <svg class="icon">
+                <use href="src/img/icons.svg?version=1#icon-phone"></use>
               </svg>
               +3(866)965-4695
             </li>
             <li>
-              <svg class="icon cv-icon">
-                <use href="src/img/icons.svg?version=1#icon--email"></use>
+              <svg class="icon">
+                <use href="src/img/icons.svg?version=1#icon-email"></use>
               </svg>
               ilyaverizhnikov95@gmail.com
             </li>
             <li>
               <svg class="icon">
-                <use href="src/img/icons.svg?version=1#icon--location"></use>
+                <use href="src/img/icons.svg?version=1#icon-location"></use>
               </svg>
               Ljubljana, Slovenia
             </li>
@@ -294,7 +214,7 @@
           <ul class="personal-details bulletless-list">
             <li>
               <svg class="icon icon--branch-cv">
-                <use href="src/img/icons.svg#icon--branch"></use>
+                <use href="src/img/icons.svg#icon-branch"></use>
               </svg>
               <a
                 class="link"
@@ -323,8 +243,17 @@
         </div>
 
         <div class="spacer-cv"></div>
+
         <div class="right-side">
-          <h2 class="heading">Profile</h2>
+          <div class="right-header">
+            <h2 class="heading">Profile</h2>
+            <a class="link" target="_blank" href="#"
+              ><svg class="icon cv-icon">
+                <use href="src/img/icons.svg?version=1#icon-download"></use>
+              </svg>
+              download CV
+            </a>
+          </div>
           <p>
             I am 36 years old and for 26 years of them I purposefully studied at
             schools and universities. I graduated from the university, 2
@@ -370,7 +299,7 @@
             <li>Installing and configuring the software.</li>
             <li>Maintenance of the corporate network.</li>
           </ul>
-          <h3 class="sub-heading-right">Other Education</h3>
+          <h3 class="sub-heading--right">Other Education</h3>
           <ul class="bulletless-list">
             <li>
               “Leader of etnological studio, teacher”, Institute of Arts and
@@ -393,7 +322,7 @@
             </li>
             <p class="data-text">OCTOBER 2017 – SEPTEMBER 2020</p>
           </ul>
-          <h3 class="sub-heading-right">Other employment history</h3>
+          <h3 class="sub-heading--right">Other employment history</h3>
           <ul class="bulletless-list">
             <li>Chef, Restaurant “JB”, Ljubljana, Slovenia</li>
             <p class="data-text">JUNE 2019 – SEPTEMBER 2021</p>
