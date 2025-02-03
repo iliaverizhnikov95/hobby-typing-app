@@ -3,20 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <link rel="icon" href="src/img/favicon.png" />
     <link rel="apple-touch-icon" href="src/img/apple-touch-icon.png" />
-    <link rel="stylesheet" href="src/css/general.css" />
-    <link rel="stylesheet" href="src/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-      rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-      rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet"
     />
+    
+    <link rel="stylesheet" href="src/css/general.css" />
+    <link rel="stylesheet" href="src/css/style.css" />
+    <link rel="stylesheet" href="src/css/queries.css" />
+
     <script type="module" src="src/js/controller.js"></script>
     <title>Hobby Typing</title>
   </head>
@@ -66,7 +70,7 @@
         <div class="typing-container full-width content-grid">
           <!-- Typing Mode Container -->
           <div class="typing-mode--container full-width">
-            <div class="punctation-panel">
+            <div class="typing-mode--panel">
               <div class="punctation shrink">
                 <button class="btn btn-text btn--punctation">
                   <svg class="icon icon--at-sign">
@@ -117,14 +121,14 @@
       <div class="key-tips">
         <div class="tip">
           Press
-          <svg class="icon-cv">
+          <svg class="icon--key-tip">
             <use href="src/img/icons.svg#icon-info"></use>
           </svg>
           at the top of the screen to watch my CV.
         </div>
         <div class="tip">
           Press
-          <svg class="icon-cv">
+          <svg class="icon--key-tip">
             <use href="src/img/icons.svg#icon--letter-q"></use>
           </svg>
           in the upper right corner to choose your favorite quote.
@@ -270,19 +274,19 @@
             “Computing machines, complexes, systems and networks”, Railway
             technical college, Orel, Russia
           </h4>
-          <p class="data-text">SEPTEMBER 2003 – JULY 2007</p>
+          <p class="date-text">SEPTEMBER 2003 – JULY 2007</p>
           <p class="profile-text">
             Thesis: Electronic clock with a thermometer based on the PCI16F628
             microcontroller. (real project)
           </p>
           <h4 class="bolded-text">«Java programming self-learning»</h4>
-          <p class="data-text">OCTOBER 2021 – NOVEMBER 2022</p>
+          <p class="date-text">OCTOBER 2021 – NOVEMBER 2022</p>
           <p class="profile-text">
             Pet-project: “HobbyTyping”, touch typing simulator, Spring Framework
             backend part.
           </p>
           <h4 class="bolded-text">«Frontend developer self-learning»</h4>
-          <p class="data-text">SEPTEMBER 2023 – PRESENT</p>
+          <p class="date-text">SEPTEMBER 2023 – PRESENT</p>
           <p class="profile-text">
             Pet-project: “HobbyTyping”, touch typing simulator, complete web
             application.
@@ -293,7 +297,7 @@
             Technical support service, Orel Energy Management Company, Orel,
             Russia
           </h4>
-          <p class="data-text">JULY 2006 – AUGUST 2008</p>
+          <p class="date-text">JULY 2006 – AUGUST 2008</p>
           <ul class="bullet-list">
             <li>Technical support for computers and office equipment.</li>
             <li>Installing and configuring the software.</li>
@@ -305,34 +309,34 @@
               “Leader of etnological studio, teacher”, Institute of Arts and
               Culture, Orel, Russia
             </li>
-            <p class="data-text">SEPTEMBER 2007 – JULY 2012</p>
+            <p class="date-text">SEPTEMBER 2007 – JULY 2012</p>
             <li>
               “Musician of the jazz orchestra, teacher”, College of Music, Orel,
               Russia
             </li>
-            <p class="data-text">SEPTEMBER 2009 – JULY 2014</p>
+            <p class="date-text">SEPTEMBER 2009 – JULY 2014</p>
             <li>
               “Teacher education and educational sciences”, Doctoral school,
               Orel State University, Russia
             </li>
-            <p class="data-text">SEPTEMBER 2012 – SEPTEMBER 2015</p>
+            <p class="date-text">SEPTEMBER 2012 – SEPTEMBER 2015</p>
             <li>
               “Hospitality and tourism” Higher Vocational College for
               Hospitality, Wellness and Tourism Bled, Slovenia
             </li>
-            <p class="data-text">OCTOBER 2017 – SEPTEMBER 2020</p>
+            <p class="date-text">OCTOBER 2017 – SEPTEMBER 2020</p>
           </ul>
           <h3 class="sub-heading--right">Other employment history</h3>
           <ul class="bulletless-list">
             <li>Chef, Restaurant “JB”, Ljubljana, Slovenia</li>
-            <p class="data-text">JUNE 2019 – SEPTEMBER 2021</p>
+            <p class="date-text">JUNE 2019 – SEPTEMBER 2021</p>
             <li>Chef, Restaurant “Javornik Arkade”, Ljubljana, Slovenia</li>
-            <p class="data-text">OCTOBER 2021 – PRESENT</p>
+            <p class="date-text">OCTOBER 2021 – PRESENT</p>
           </ul>
           <h2 class="heading">References</h2>
           <ul class="bulletless-list">
             <li>Iztok Sila from Vocational College Bled</li>
-            <p class="data-text">iztok.sila@vgs-bled.si</p>
+            <p class="date-text">iztok.sila@vgs-bled.si</p>
           </ul>
         </div>
       </div>

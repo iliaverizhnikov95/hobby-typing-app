@@ -6,6 +6,9 @@
   --sub-alt-color: rgba(226, 181, 20, 0.8);
   --logo-color: #d1d0c5;
   --error-color: #ca4754;
+
+  --padding-inline: 5rem;
+  --content-max-width: 160rem;
 }
 
 * {
@@ -56,13 +59,15 @@ body {
   padding: 3.2rem 0;
 }
 
+#app > .content-end {
+  grid-template-rows: content-end;
+}
+
 /* TODO
   1) Change --padding-inline to 2rem, after seting up @media queries
 */
 
 .content-grid {
-  --padding-inline: 8rem;
-  --content-max-width: 160rem;
   display: grid;
   grid-template-columns:
     [full-width-start] minmax(0, var(--padding-inline))
@@ -82,10 +87,6 @@ body {
 
 .content-grid > .full-width {
   grid-column: full-width;
-}
-
-.content-grid > .full-width-padding {
-  grid-column: full-width-padding;
 }
 
 /**************************/

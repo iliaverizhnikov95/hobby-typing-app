@@ -13,7 +13,6 @@
 .menu {
   display: flex;
   align-items: end;
-  justify-content: left;
   gap: 4rem;
 }
 
@@ -64,14 +63,14 @@
 
 .typing-mode--container {
   display: grid;
-  font-size: 1.2rem;
   align-items: start;
   justify-content: space-around;
   margin-bottom: 1.6rem;
 }
 
-.punctation-panel {
+.typing-mode--panel {
   display: flex;
+  font-size: 1.2rem;
   background-color: var(--bg-alt-color);
   border-radius: 0.8rem;
   justify-content: center;
@@ -114,7 +113,7 @@
 }
 
 .shrink {
-  width: 0;
+  width: 0 !important; 
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -128,10 +127,6 @@
 }
 
 /* Quote field */
-
-/* TODO
-  1) Change padding left up to 8 for a small @media queries
-*/
 
 .quote {
   display: flex;
@@ -229,14 +224,8 @@
 }
 
 /**************************/
-/* FOOTER */
+/* TIPS SECTION */
 /**************************/
-
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-self: end;
-}
 
 .key-tips {
   display: flex;
@@ -251,9 +240,19 @@
   gap: 0.6rem;
 }
 
-.icon-cv {
+.icon--key-tip {
   height: 1.8rem;
   width: 1.8rem;
+}
+
+/**************************/
+/* FOOTER */
+/**************************/
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-self: end;
 }
 
 .link,
@@ -349,6 +348,7 @@
   justify-content: center;
   margin-bottom: 2rem;
 }
+
 .title-text {
   font-size: 2rem;
   padding-left: 0.8rem;
@@ -509,7 +509,7 @@
   line-height: 3rem;
 }
 
-.data-text {
+.date-text {
   font-size: 1.6rem;
   margin: 1rem 0 1.4rem 2rem;
 }
@@ -535,10 +535,10 @@
 .spacer-cv {
   grid-area: spacer;
   height: auto;
-  width: 0.5em;
+  width: 0.5rem;
   border-radius: 1rem;
   background: var(--bg-alt-color);
-  margin: 3rem 0;
+  margin: 6rem 4rem;
 }
 
 /**************************/
