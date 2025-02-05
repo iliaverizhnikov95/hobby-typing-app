@@ -358,6 +358,8 @@
 /**************************/
 
 @media (max-width: 34em) {
+  /* Typing test section */
+
   .typing-container {
     margin-top: 0.8rem;
   }
@@ -376,6 +378,22 @@
 
   .input-field {
     height: 15rem;
+  }
+
+  /* Footer */
+
+  .footer {
+    font-size: 0.6rem;
+  }
+
+  .key-tips {
+    font-size: 0.6rem;
+    gap: 0rem;
+  }
+
+  .icon--key-tip {
+    height: 1.2rem;
+    width: 1.2rem;
   }
 
   /* Quote popup */
@@ -414,18 +432,25 @@
   /* CV popup */
 
   .cv-popup {
-    padding: 2.8rem;
+    padding: 2.4rem;
   }
 
   .left-side {
+    padding-left: 1.6rem;
     font-size: 1.6rem;
-    width: 30rem;
+    width: 25rem;
   }
 
   .right-side {
     font-size: 1.6rem;
   }
-  
+
+  .right-header a {
+    margin-top: -2rem;
+    font-size: 1rem;
+    height: 1rem;
+  }
+
   .heading {
     font-size: 2.2rem;
   }
@@ -449,11 +474,17 @@
 }
 
 /**************************/
-/* Fixing Safari flexbox gap */
+/* BELOW 400px (Phones) */
 /**************************/
 
-@media (max-width: 75em) {
-}
+@media (max-width: 25em) {
+  /* Typing mode section */
 
-@media (max-width: 59em) {
+  .typing-mode--panel {
+    padding: 0.8rem 0rem;
+  }
+
+  .mode-words {
+    display: none;
+  }
 }
