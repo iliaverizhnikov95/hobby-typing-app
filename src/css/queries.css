@@ -488,4 +488,12 @@
   .mode-words {
     display: none;
   }
+
+  /* Quote popup */
+
+  .favourite--text-field {
+    font-size: 1.4rem;
+    width: 20rem;
+    padding-bottom: 0.4rem;
+  }
 }
