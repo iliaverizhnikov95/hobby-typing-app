@@ -53,7 +53,7 @@ class TypingView extends View {
         class="input-field"
         type="text"
         spellcheck="false"
-        placeholder="Start typing the quote..."
+        placeholder="Just retype this text here..."
       ></textarea>
       <div>
         <button class="btn btn--reload btn-tooltip" aria-label="Reload">
