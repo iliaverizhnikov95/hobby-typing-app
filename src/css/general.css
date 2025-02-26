@@ -5,6 +5,7 @@
   --sub-color: #e2b714;
   --sub-alt-color: rgba(226, 181, 20, 0.8);
   --logo-color: #d1d0c5;
+  --hover-color: #d1d0c5;
   --error-color: #ca4754;
 
   --padding-inline: 5rem;
@@ -101,7 +102,7 @@ body {
 
 .btn:hover * {
   cursor: pointer;
-  color: var(--logo-color);
+  color: var(--hover-color);
   opacity: 1;
   transition: 0.3s;
 }

@@ -4,12 +4,14 @@ import modalView from './views/CVModalView.js';
 import successResultView from './views/successResultView.js';
 import typingModeView from './views/typingModeView.js';
 import favouriteQuoteView from './views/favouriteQuoteView.js';
+import colourSchemeView from './views/colourSchemeView.js';
+import colorCollection from '../css/colorCollection.js';
 
 const state = model.state;
 
 /**
  * Depends on modeToggle controls the test rendering process. If modeToggle set to false it starts execution of loading and rendering single quote, if true - starts execution of loading and rendering set of words.
- * @param {string} id - In case of loading a specific quote, it gets the ID, or uses the default value ('random/') to loading random quote. 
+ * @param {string} id - In case of loading a specific quote, it gets the ID, or uses the default value ('random/') to loading random quote.
  */
 
 const controlTypingTest = async function (id) {
@@ -96,5 +98,6 @@ const init = function () {
   );
   favouriteQuoteView.addHandlerShowQuoteModal();
   favouriteQuoteView.addHandlerHideQuoteModal();
+  colourSchemeView.setColourScheme(colorCollection.colorSchemes.Desert);
 };
 init();

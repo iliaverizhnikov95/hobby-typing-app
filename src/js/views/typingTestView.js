@@ -1,13 +1,12 @@
 import View from './View.js';
-
 import icons from '../../img/icons.svg';
 
 class TypingView extends View {
   _parentElement = document.querySelector('.typing-test--container');
   _timeoutValue = 100;
   _errorMessage = 'We could not load your test. Please reload the page!';
-  _successMessage = 'Congretulation!!! Choose your next step...'
-  
+  _successMessage = 'Congretulation!!! Choose your next step...';
+
   addHandlerReloadTest(handler) {
     this._parentElement.addEventListener(
       'click',
@@ -27,7 +26,7 @@ class TypingView extends View {
       function (e) {
         const targetText = e.target.closest('.input-field');
         const comparisonText = this._data.text;
-        
+
         if (targetText) {
           if (comparisonText === targetText.value) {
             handler(this._successMessage);

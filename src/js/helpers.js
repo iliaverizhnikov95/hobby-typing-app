@@ -19,3 +19,19 @@ export const getJSON = async function (url) {
     throw err;
   }
 };
+
+function hover() { 
+  function is_touch_enabled() { 
+
+      // Check if touch is enabled 
+      return "ontouchstart" 
+          in window || navigator.maxTouchPoints > 0 
+          || navigator.msMaxTouchPoints > 0; 
+  } 
+  if (!is_touch_enabled()) { 
+
+      // If touch is not enabled, add "btn2" class 
+      var b = document.getElementById("btn"); 
+      b.classList.add("btn2"); 
+  } 
+} 
