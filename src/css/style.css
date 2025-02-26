@@ -526,6 +526,10 @@
   margin: 1rem 0 1.4rem 2rem;
 }
 
+.right-side p {
+  text-align: justify;
+}
+
 .profile-text {
   margin-bottom: 2rem;
 }

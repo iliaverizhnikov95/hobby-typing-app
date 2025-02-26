@@ -4,7 +4,7 @@ import modalView from './views/CVModalView.js';
 import successResultView from './views/successResultView.js';
 import typingModeView from './views/typingModeView.js';
 import favouriteQuoteView from './views/favouriteQuoteView.js';
-import colourSchemeView from './views/colourSchemeView.js';
+import colourSchemeView from './views/colorSchemeView.js';
 import colorCollection from '../css/colorCollection.js';
 
 const state = model.state;
@@ -98,6 +98,6 @@ const init = function () {
   );
   favouriteQuoteView.addHandlerShowQuoteModal();
   favouriteQuoteView.addHandlerHideQuoteModal();
-  colourSchemeView.setColourScheme(colorCollection.colorSchemes.Desert);
+  // colorSchemeView.setColourScheme(colorCollection.colorSchemes.Desert);
 };
 init();
