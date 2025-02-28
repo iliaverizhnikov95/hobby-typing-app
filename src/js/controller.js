@@ -98,6 +98,5 @@ const init = function () {
   );
   favouriteQuoteView.addHandlerShowQuoteModal();
   favouriteQuoteView.addHandlerHideQuoteModal();
-  // colorSchemeView.setColourScheme(colorCollection.colorSchemes.Desert);
 };
 init();
